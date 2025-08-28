@@ -14,8 +14,10 @@ export default function PaginaSugestoes() {
             <div className="flex flex-col">
               <label htmlFor="assunto" className="font-semibold mb-2 text-gray-700">Assunto:</label>
               <select name="assunto" id="assunto" className="p-4 rounded-xl border border-gray-300 focus:border-blue-600 outline-none transition">
-                <option value="site">Sobre o Site</option>
-                <option value="academia">Sobre a Academia/Aulas</option>
+                <option value="aulas"> Aulas</option>
+                <option value="academia">Judô Clube </option>
+                <option value="site">Site</option>
+                <option value="outros">Outros</option>
               </select>
             </div>
             <div className="flex flex-col">
