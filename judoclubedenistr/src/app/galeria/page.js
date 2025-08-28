@@ -24,7 +24,7 @@ export default function PaginaGaleria() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
         <h1>Galeria</h1>
         <p>Confira nossos momentos registrados:</p>
         <GaleriaCliente albuns={albuns} />

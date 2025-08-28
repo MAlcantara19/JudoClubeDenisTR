@@ -1,10 +1,12 @@
-import Cabecalho from "../../components/Header";
-import Rodape from "../../components/Footer";
+"use client";
+
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export default function PaginaCalendario() {
   return (
     <>
-      <Cabecalho />
+      <Header />
 
       <main style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
         <h1>Calendário de Aulas e Eventos</h1>
@@ -28,7 +30,7 @@ export default function PaginaCalendario() {
           Calendário Confederada Rio 2ª Edição
         </h2>
         <iframe
-          src="pdf/Calendario_Confederada_2025.pdf"
+          src="/pdf/Calendario_Confederada_2025.pdf"
           width="100%"
           height="600"
           style={{ border: 0, marginTop: "10px" }}
@@ -36,7 +38,7 @@ export default function PaginaCalendario() {
         />
       </main>
 
-      <Rodape />
+      <Footer />
     </>
   );
 }

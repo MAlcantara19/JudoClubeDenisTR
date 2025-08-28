@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function Cabecalho() {
+export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
-    <header className="cabecalho">
+    <header className="header">
       <div className="container-header">
         <div className="logo-titulo">
           <Image
@@ -31,13 +31,17 @@ export default function Cabecalho() {
           </ul>
         </nav>
 
-        <button className="botao-menu" onClick={() => setMenuAberto(!menuAberto)}>
+        <button
+          className="botao-menu"
+          aria-label="Abrir menu"
+          onClick={() => setMenuAberto(!menuAberto)}
+        >
           ☰
         </button>
       </div>
 
       <style jsx>{`
-        .cabecalho {
+        .header {
           background-color: #f8f8f8;
           padding: 10px 20px;
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -78,7 +82,6 @@ export default function Cabecalho() {
           cursor: pointer;
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
           .nav {
             width: 100%;

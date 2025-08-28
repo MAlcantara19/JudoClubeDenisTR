@@ -1,11 +1,13 @@
-import Cabecalho from "../../components/Header";
-import Rodape from "../../components/Footer";
+"use client";
+
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import Image from "next/image";
 
 export default function PaginaContato() {
   return (
     <>
-      <Cabecalho />
+      <Header />
 
       <main style={{ padding: "20px", maxWidth: "900px", margin: "0 auto" }}>
         <h1>Contato</h1>
@@ -21,7 +23,13 @@ export default function PaginaContato() {
           >
             WhatsApp
           </a>{" "}
-          <span style={{ display: "inline-block", verticalAlign: "middle", marginLeft: "15px" }}>
+          <span
+            style={{
+              display: "inline-block",
+              verticalAlign: "middle",
+              marginLeft: "15px",
+            }}
+          >
             <Image
               src="/images/QR_Code_Wpp_Denis.png"
               alt="QR Code WhatsApp Sensei Denis"
@@ -42,10 +50,10 @@ export default function PaginaContato() {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Localização"
-        ></iframe>
+        />
       </main>
 
-      <Rodape />
+      <Footer />
     </>
   );
 }
