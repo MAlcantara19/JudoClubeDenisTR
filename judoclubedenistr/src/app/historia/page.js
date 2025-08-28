@@ -1,8 +1,8 @@
 "use client"; // necessário para useState e useEffect
 
 import { useState, useEffect } from "react";
-import Cabecalho from "../../components/Header";
-import Rodape from "../../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const citacoes = [
   "O judô é o caminho da gentileza e do autocontrole.",
@@ -15,14 +15,13 @@ export default function PaginaHistoria() {
   const [citacao, setCitacao] = useState("");
 
   useEffect(() => {
-    // Escolhe uma citação aleatória a cada carregamento
     const aleatoria = citacoes[Math.floor(Math.random() * citacoes.length)];
     setCitacao(aleatoria);
   }, []);
 
   return (
     <>
-      <Cabecalho />
+      <Header />
 
       <main style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
         <h1>Nossa História</h1>
@@ -45,12 +44,12 @@ export default function PaginaHistoria() {
         <section style={fadeIn}>
           <h3>Citação inspiradora do dia:</h3>
           <blockquote style={{ fontStyle: "italic", color: "#555" }}>
-            "{citacao}"
+            {citacao}
           </blockquote>
         </section>
       </main>
 
-      <Rodape />
+      <Footer />
       
       <style jsx>{`
         @keyframes fadeIn {

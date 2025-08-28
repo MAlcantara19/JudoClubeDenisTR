@@ -1,10 +1,10 @@
-import Cabecalho from "../components/Header";
-import Rodape from "../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export default function PaginaInicial() {
   return (
     <>
-      <Cabecalho />
+      <Header />
       <main>
         <section className="hero">
           <h1>Bem-vindo ao Judô Clube Denis de Toledo Ribas</h1>
@@ -27,7 +27,7 @@ export default function PaginaInicial() {
           <p>Recomendado para crianças a partir de 5 anos.</p>
         </section>
       </main>
-      <Rodape />
+      <Footer />
     </>
   );
 }

@@ -1,60 +1,97 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
-export default function GaleriaCliente({ albuns }) {
-  const [lightboxAtivo, setLightboxAtivo] = useState(false);
+// Exemplo de álbuns, você pode substituir por props ou fetch
+const albumsExemplo = [
+  {
+    titulo: "Treinos 2025",
+    imagens: [
+      "/images/album1/foto1.jpg",
+      "/images/album1/foto2.jpg",
+      "/images/album1/foto3.jpg"
+    ]
+  },
+  {
+    titulo: "Eventos",
+    imagens: [
+      "/images/album2/foto1.jpg",
+      "/images/album2/foto2.jpg"
+    ]
+  }
+];
+
+export default function Galeria() {
+  const [lightboxVisivel, setLightboxVisivel] = useState(false);
   const [albumAtual, setAlbumAtual] = useState([]);
   const [indiceAtual, setIndiceAtual] = useState(0);
 
   const abrirLightbox = (album, indice) => {
     setAlbumAtual(album.imagens);
     setIndiceAtual(indice);
-    setLightboxAtivo(true);
+    setLightboxVisivel(true);
   };
 
-  const fecharLightbox = () => setLightboxAtivo(false);
-  const imagemAnterior = () =>
-    setIndiceAtual((prev) => (prev - 1 + albumAtual.length) % albumAtual.length);
-  const proximaImagem = () =>
-    setIndiceAtual((prev) => (prev + 1) % albumAtual.length);
+  const fecharLightbox = () => setLightboxVisivel(false);
+  const prevImage = () => setIndiceAtual((i) => (i - 1 + albumAtual.length) % albumAtual.length);
+  const nextImage = () => setIndiceAtual((i) => (i + 1) % albumAtual.length);
 
   return (
-    <section className="galeria">
-      {albuns.map((album, index) => (
-        <div className="album" key={index}>
-          <h2>{album.titulo}</h2>
-          <div className="imagens-album">
-            {album.imagens.map((imgSrc, idx) => (
-              <img
-                src={imgSrc}
-                alt={`Foto ${idx + 1}`}
-                key={idx}
-                onClick={() => abrirLightbox(album, idx)}
-                style={{ cursor: "pointer", maxWidth: "150px", margin: "5px" }}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
+    <>
+      <Header />
 
-      {lightboxAtivo && (
-        <div style={estiloLightbox}>
-          <span onClick={fecharLightbox} style={estiloFechar}>&times;</span>
-          <span onClick={imagemAnterior} style={estiloNav}>&#10094;</span>
-          <img src={albumAtual[indiceAtual]} alt="Zoom" style={{ maxHeight: "80vh" }} />
-          <span onClick={proximaImagem} style={estiloNav}>&#10095;</span>
-          <div style={{ color: "#fff", marginTop: "10px" }}>
-            {`${indiceAtual + 1} / ${albumAtual.length}`}
+      <main style={{ padding: "20px" }}>
+        <h1>Galeria</h1>
+        <p>Confira nossos momentos registrados:</p>
+
+        {albumsExemplo.map((album, idx) => (
+          <div key={idx}>
+            <h2>{album.titulo}</h2>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+              {album.imagens.map((img, i) => (
+                <Image
+                  key={i}
+                  src={img}
+                  alt={`Foto ${i + 1}`}
+                  width={150}
+                  height={150}
+                  style={{ cursor: "pointer", objectFit: "cover" }}
+                  onClick={() => abrirLightbox(album, i)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-    </section>
+        ))}
+
+        {lightboxVisivel && (
+          <div style={lightboxStyles}>
+            <span style={fecharBtnStyle} onClick={fecharLightbox}>&times;</span>
+            <span style={navBtnStyle} onClick={prevImage}>&#10094;</span>
+            <Image
+              src={albumAtual[indiceAtual]}
+              alt="Zoom"
+              width={800}
+              height={600}
+              style={{ maxHeight: "80vh", objectFit: "contain" }}
+            />
+            <span style={navBtnStyle} onClick={nextImage}>&#10095;</span>
+            <div style={{ color: "#fff", marginTop: "10px" }}>
+              {indiceAtual + 1} / {albumAtual.length}
+            </div>
+          </div>
+        )}
+      </main>
+
+      <Footer />
+    </>
   );
 }
 
-// Lightbox estilos
-const estiloLightbox = {
+// Estilos do lightbox
+const lightboxStyles = {
   position: "fixed",
   top: 0,
   left: 0,
@@ -68,7 +105,7 @@ const estiloLightbox = {
   zIndex: 1000
 };
 
-const estiloFechar = {
+const fecharBtnStyle = {
   position: "absolute",
   top: "20px",
   right: "35px",
@@ -78,7 +115,7 @@ const estiloFechar = {
   cursor: "pointer"
 };
 
-const estiloNav = {
+const navBtnStyle = {
   position: "absolute",
   top: "50%",
   color: "#fff",
