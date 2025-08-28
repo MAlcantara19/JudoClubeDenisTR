@@ -1,4 +1,4 @@
-"use client"; // necessário se houver interatividade
+"use client";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -7,132 +7,25 @@ export default function PaginaSugestoes() {
   return (
     <>
       <Header />
-
-      <main
-        style={{
-          minHeight: "80vh",
-          backgroundColor: "#f4f6f8",
-          padding: "60px 20px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "600px",
-            backgroundColor: "#fff",
-            borderRadius: "20px",
-            padding: "40px",
-            boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-          }}
-        >
-          <h1
-            style={{
-              textAlign: "center",
-              fontSize: "2.5rem",
-              color: "#1a202c",
-              marginBottom: "30px",
-            }}
-          >
-            Sugestões & Reclamações
-          </h1>
-
-          <form
-            action="https://docs.google.com/forms/d/e/1FAIpQLSfFicticio/formResponse"
-            method="post"
-            target="_blank"
-            style={{ display: "flex", flexDirection: "column", gap: "25px" }}
-          >
-            {/* Assunto */}
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <label
-                htmlFor="assunto"
-                style={{
-                  fontWeight: "600",
-                  marginBottom: "8px",
-                  color: "#333",
-                }}
-              >
-                Assunto:
-              </label>
-              <select
-                name="assunto"
-                id="assunto"
-                style={{
-                  padding: "15px",
-                  borderRadius: "15px",
-                  border: "1px solid #ccc",
-                  fontSize: "1rem",
-                  color: "#333",
-                  outline: "none",
-                  transition: "0.3s",
-                }}
-                onFocus={(e) => (e.target.style.borderColor = "#3182ce")}
-                onBlur={(e) => (e.target.style.borderColor = "#ccc")}
-              >
+      <main className="flex justify-center items-start min-h-[80vh] p-8 bg-gray-100">
+        <div className="w-full max-w-lg bg-white rounded-2xl p-10 shadow-xl">
+          <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">Sugestões & Reclamações</h1>
+          <form className="flex flex-col gap-6" action="https://docs.google.com/forms/d/e/1FAIpQLSfFicticio/formResponse" method="post" target="_blank">
+            <div className="flex flex-col">
+              <label htmlFor="assunto" className="font-semibold mb-2 text-gray-700">Assunto:</label>
+              <select name="assunto" id="assunto" className="p-4 rounded-xl border border-gray-300 focus:border-blue-600 outline-none transition">
                 <option value="site">Sobre o Site</option>
                 <option value="academia">Sobre a Academia/Aulas</option>
               </select>
             </div>
-
-            {/* Mensagem */}
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <label
-                htmlFor="mensagem"
-                style={{
-                  fontWeight: "600",
-                  marginBottom: "8px",
-                  color: "#333",
-                }}
-              >
-                Sua mensagem:
-              </label>
-              <textarea
-                name="mensagem"
-                id="mensagem"
-                rows={6}
-                required
-                placeholder="Escreva sua sugestão ou reclamação..."
-                style={{
-                  padding: "20px",
-                  borderRadius: "15px",
-                  border: "1px solid #ccc",
-                  fontSize: "1rem",
-                  resize: "vertical",
-                  outline: "none",
-                  transition: "0.3s",
-                  color: "#333",
-                }}
-                onFocus={(e) => (e.target.style.borderColor = "#3182ce")}
-                onBlur={(e) => (e.target.style.borderColor = "#ccc")}
-              />
+            <div className="flex flex-col">
+              <label htmlFor="mensagem" className="font-semibold mb-2 text-gray-700">Sua mensagem:</label>
+              <textarea name="mensagem" id="mensagem" rows={6} required placeholder="Escreva sua sugestão ou reclamação..." className="p-5 rounded-xl border border-gray-300 focus:border-blue-600 outline-none resize-vertical transition"/>
             </div>
-
-            {/* Botão */}
-            <button
-              type="submit"
-              style={{
-                padding: "18px",
-                borderRadius: "15px",
-                backgroundColor: "#3182ce",
-                color: "#fff",
-                fontSize: "1.1rem",
-                fontWeight: "600",
-                border: "none",
-                cursor: "pointer",
-                transition: "all 0.3s",
-              }}
-              onMouseOver={(e) => (e.target.style.backgroundColor = "#2b6cb0")}
-              onMouseOut={(e) => (e.target.style.backgroundColor = "#3182ce")}
-            >
-              Enviar
-            </button>
+            <button type="submit" className="p-5 rounded-xl bg-blue-600 hover:bg-blue-800 text-white font-semibold transition">Enviar</button>
           </form>
         </div>
       </main>
-
       <Footer />
     </>
   );

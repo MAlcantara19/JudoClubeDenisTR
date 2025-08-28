@@ -1,106 +1,125 @@
-"use client"; // necessário para usar useState
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Header() {
-  const [menuAberto, setMenuAberto] = useState(false);
-
   return (
     <header className="header">
-      <div className="container-header">
+      <div className="container">
+        {/* Logo + Título */}
         <div className="logo-titulo">
-          <Image
-            src="/images/Logo_JudoClube.jpg"
-            alt="Logo Judô Clube"
-            width={80}
-            height={80}
-          />
-          <h1>Judô Clube Denis de Toledo Ribas</h1>
+          <Link href="/" className="nav-link">
+            <Image
+              src="/images/Logo_JudoClube.jpg"
+              alt="Logo Judô Clube"
+              width={110}
+              height={110}
+              className="logo"
+            /></Link>
+
+          <h1 className="titulo"><Link href="/" className="nav-link">Judô Clube Denis de Toledo Ribas</Link></h1>
         </div>
 
-        <nav className={`nav ${menuAberto ? "aberto" : ""}`}>
-          <ul>
-            <li><Link href="/">Início</Link></li>
-            <li><Link href="/historia">Nossa História</Link></li>
-            <li><Link href="/galeria">Galeria</Link></li>
-            <li><Link href="/calendario">Calendário</Link></li>
-            <li><Link href="/contato">Contato</Link></li>
-            <li><Link href="/sugestoes">Sugestões</Link></li>
-          </ul>
+        {/* Navegação */}
+        <nav className="nav">
+          <Link href="/" className="nav-link">Início</Link>
+          <Link href="/historia" className="nav-link">Nossa História</Link>
+          <Link href="/galeria" className="nav-link">Galeria</Link>
+          <Link href="/calendario" className="nav-link">Calendário</Link>
+          <Link href="/contato" className="nav-link">Contato</Link>
+          <Link href="/sugestoes" className="nav-link">Sugestões</Link>
         </nav>
 
-        <button
-          className="botao-menu"
-          aria-label="Abrir menu"
-          onClick={() => setMenuAberto(!menuAberto)}
-        >
-          ☰
-        </button>
       </div>
 
       <style jsx>{`
         .header {
-          background-color: #f8f8f8;
-          padding: 10px 20px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          width: 100%;
+          background-color: #0c1631;
+          color: white;
+          box-shadow: 0 4px 6px #2231a2;
         }
-        .container-header {
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0.5rem 1rem;
           display: flex;
           align-items: center;
           justify-content: space-between;
           flex-wrap: wrap;
+          gap: 0.5rem;
         }
+
         .logo-titulo {
           display: flex;
           align-items: center;
+          gap: 1rem;
+          flex-shrink: 0;
         }
-        .logo-titulo h1 {
-          margin-left: 10px;
+
+        .logo {
+          border-radius: 9999px;
+          border: 2px solid white;
+        }
+
+        .titulo {
           font-size: 1.5rem;
+          font-weight: bold;
+          white-space: nowrap;
         }
-        .nav ul {
+
+        .nav {
           display: flex;
-          list-style: none;
-          padding: 0;
-          margin: 0;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          gap: 1rem;
+          flex: 1;
+          min-width: 200px;
         }
-        .nav ul li {
-          margin: 0 10px;
+
+        .nav a {
+          text-decoration: none !important;
+          color: white;
+          font-weight: 600;
+          padding: 0.25rem 0.5rem;
+          border-radius: 0.25rem;
+          display: inline-block; /* necessário para transform funcionar */
+          transition: transform 0.3s ease, background-color 0.3s ease,
+            color 0.3s ease;
         }
-        .nav ul li a {
-          text-decoration: none;
-          color: #333;
-          font-weight: 500;
+
+        .nav a:hover {
+          color: #ffd700;
+          background-color: rgba(255, 255, 255, 0.1);
+          transform: scale(1.05);
         }
-        .botao-menu {
-          display: none;
-          font-size: 1.5rem;
-          background: none;
-          border: none;
-          cursor: pointer;
+
+        .nav a:active {
+          transform: scale(0.95);
         }
 
         @media (max-width: 768px) {
+          .titulo {
+            font-size: 1.2rem;
+          }
           .nav {
+            justify-content: center;
+            gap: 0.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .container {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .nav {
+            justify-content: flex-start;
+            gap: 0.5rem;
             width: 100%;
-            display: none;
-            flex-direction: column;
-            margin-top: 10px;
-          }
-          .nav.aberto {
-            display: flex;
-          }
-          .nav ul {
-            flex-direction: column;
-            align-items: center;
-          }
-          .nav ul li {
-            margin: 5px 0;
-          }
-          .botao-menu {
-            display: block;
+            flex-wrap: wrap;
           }
         }
       `}</style>

@@ -1,70 +1,79 @@
-"use client"; // necessário para links interativos
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Rodape() {
+export default function Footer() {
   return (
-    <footer className="rodape">
-      <div className="topo-rodape">
-        <div className="logo-rodape">
-          <Image
-            src="/images/Logo_JudoClube.jpg"
-            alt="Logo Judô Clube"
-            width={80}
-            height={80}
-          />
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="logo-titulo">
+          <Link href="/" className="nav-link">
+            <Image
+              src="/images/Logo_JudoClube.jpg"
+              alt="Logo Judô Clube"
+              width={110}
+              height={110}
+              className="logo"
+            /></Link>
+          
         </div>
-        <div className="links-sociais">
+        <div className="redes">
           <Link href="https://www.facebook.com" target="_blank">Facebook</Link>
           <Link href="https://www.instagram.com" target="_blank">Instagram</Link>
-          <Link href="https://wa.me/5599999999999" target="_blank">WhatsApp</Link>
+          <span>📞 Telefone e WhatsApp: <a
+            href="https://w.app/judoclubedenisdetoledoribas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 font-semibold hover:text-blue-700 transition"
+            > (24) 9 8817-1660</a>
+          </span>
+        </div>
+        <div>
+          &copy; 2025 Judô Clube Denis de Toledo Ribas. Todos os direitos reservados.
         </div>
       </div>
 
-      <p>&copy; 2025 Judô Clube Denis de Toledo Ribas. Todos os direitos reservados.</p>
-
       <style jsx>{`
-        .rodape {
+        .footer {
+          width: 100%;
+          background-color: #0c1631;
+          color: white;
+          padding: 1rem 1rem;
+        }
+        .footer-container {
+          max-width: 1200px;
+          margin: 0 auto;
           display: flex;
           flex-direction: column;
           align-items: center;
-          padding: 30px 20px;
-          background-color: #e6d5b8;
-          color: #333;
+          gap: 1rem;
           text-align: center;
         }
-        .topo-rodape {
+        .logo-copy {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-bottom: 15px;
+          gap: 0.5rem;
         }
-        .logo-rodape {
-          margin-bottom: 15px;
-        }
-        .links-sociais {
+        .redes {
           display: flex;
-          gap: 15px;
+          gap: 1rem;
+          justify-content: center;
         }
-        .links-sociais a {
-          color: #333;
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.3s;
+        .redes a {
+          text-decoration: none !important;
+          color: white;
+          font-weight: 600;
+          transition: all 0.3s;
         }
-        .links-sociais a:hover {
-          color: #b53e3e;
+        .redes a:hover {
+          color: #FFD700;
         }
-        .rodape p {
-          margin: 0;
-          font-size: 0.9rem;
-          color: #555;
-        }
-        @media (max-width: 600px) {
-          .links-sociais {
+
+        @media (min-width: 768px) {
+          .footer-container {
             flex-direction: column;
-            gap: 10px;
           }
         }
       `}</style>

@@ -1,4 +1,4 @@
-"use client"; // necessário para useState e useEffect
+"use client";
 
 import { useState, useEffect } from "react";
 import Header from "../../components/Header";
@@ -15,54 +15,31 @@ export default function PaginaHistoria() {
   const [citacao, setCitacao] = useState("");
 
   useEffect(() => {
-    const aleatoria = citacoes[Math.floor(Math.random() * citacoes.length)];
-    setCitacao(aleatoria);
+    setCitacao(citacoes[Math.floor(Math.random() * citacoes.length)]);
   }, []);
 
   return (
     <>
       <Header />
-
-      <main style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-        <h1>Nossa História</h1>
-
-        <section style={fadeIn}>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <section className="space-y-4 animate-fadeIn">
+          <h1 className="text-3xl font-bold text-center">Nossa História</h1>
           <p>
             O Judô Clube Denis de Toledo Ribas nasceu com o propósito de formar atletas e cidadãos,
-            transmitindo valores como disciplina, respeito e superação. Nossa missão é desenvolver o judô 
-            como ferramenta de educação e transformação social.
+            transmitindo valores como disciplina, respeito e superação.
           </p>
-        </section>
-
-        <section style={fadeIn}>
           <p>
             Continuando a tradição de nosso antecessor, Shihan Allan Kardec, nosso clube mantém os princípios
             do judô, incentivando alunos de todas as idades, desde iniciantes até aspirantes à faixa preta.
           </p>
         </section>
 
-        <section style={fadeIn}>
-          <h3>Citação inspiradora do dia:</h3>
-          <blockquote style={{ fontStyle: "italic", color: "#555" }}>
-            {citacao}
-          </blockquote>
+        <section className="text-center space-y-2 animate-fadeIn">
+          <h3 className="text-xl font-semibold">Citação inspiradora do dia:</h3>
+          <blockquote className="italic text-gray-600">{citacao}</blockquote>
         </section>
       </main>
-
       <Footer />
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-      `}</style>
     </>
   );
 }
-
-// Estilo fade-in
-const fadeIn = {
-  animation: "fadeIn 1s ease-in",
-  marginBottom: "20px"
-};

@@ -1,4 +1,5 @@
-import '../styles/styles.css'; // importe o CSS global
+import "../styles/globals.css";
+
 
 export const metadata = {
   title: 'Judô Clube Denis de Toledo Ribas',
