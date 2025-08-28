@@ -37,7 +37,7 @@ export default function Footer() {
       <style jsx>{`
         .footer {
           width: 100%;
-          background-color: #0c1631;
+          background-color: rgba(71, 80, 201, 1);
           color: white;
           padding: 1rem 1rem;
         }
@@ -68,7 +68,7 @@ export default function Footer() {
           transition: all 0.3s;
         }
         .redes a:hover {
-          color: #FFD700;
+          color: gold;
         }
 
         @media (min-width: 768px) {

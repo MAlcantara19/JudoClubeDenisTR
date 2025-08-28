@@ -153,12 +153,12 @@ a {
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   display: inline-block;
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.4s ease, background-color 0.3s ease, color 0.3s ease;
   font-family: 'Garamond', serif;
 }
 
 .nav-link:hover {
-  color: #ffd700;
+  color: gold;
   background-color: rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
@@ -166,3 +166,7 @@ a {
 .nav-link:active {
   transform: scale(0.95);
 }
+
+
+
+

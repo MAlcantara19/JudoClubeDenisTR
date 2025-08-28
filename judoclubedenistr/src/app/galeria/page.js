@@ -97,34 +97,23 @@ export default function PaginaGaleria() {
           text-align: center;
         }
 
-        .album-images {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 15px;
-          justify-items: center;
-        }
+       .album-images {
+  display: flex; /* flex em vez de grid */
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
 
-        .card {
-          width: 100%;
-          max-width: 250px;
-          border-radius: 10px;
-          overflow: hidden;
-          border: 2px solid #fff;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          cursor: pointer;
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
 
-        .card img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
+.card img {
+  display: block;
+  width: 80%; /* mantém proporção original */
+  height: auto;
+  max-width: 200px; /* largura máxima para não ficarem gigantes */
+}
 
-        .card:hover {
-          transform: scale(1.05);
-          box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-        }
+
+
 
         .lightbox {
           display: flex;
