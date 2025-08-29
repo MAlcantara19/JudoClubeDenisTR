@@ -26,27 +26,36 @@ time, mark, audio, video, button, input, select, textarea {
   margin: 0;
   padding: 0;
   font-family: 'Garamond', serif;
-  box-sizing: border-box;
+  box-sizing: border-box; /* importante para largura e padding */
 }
 
 /* Body */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* remove scroll horizontal */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   line-height: 1.6;
-  width: 100%;
+}
+
+/* Imagens, iframes e vídeos responsivos */
+img, iframe, video {
   max-width: 100%;
-  overflow-x: hidden; /* remove scroll lateral */
+  height: auto;
+  display: block;
 }
 
-/* Main centralizado */
+/* Main centralizado com margem e padding */
 main {
-  max-width: 1200px;   /* largura máxima do conteúdo */
-  margin: 1rem auto;   /* 1rem de margem acima e abaixo, centralizado horizontalmente */
-  padding: 2rem;       /* espaço interno */
+  max-width: 1200px;
+  margin: 1rem auto; /* centralizado horizontal */
+  padding: 2rem;
   width: 100%;
 }
-
 
 /* Galeria */
 .album {
@@ -92,7 +101,6 @@ form input, form select, form textarea {
   outline: none;
   width: 100%;
   transition: all 0.3s;
-  font-family: 'Garamond', serif;
 }
 
 form input:focus, form select:focus, form textarea:focus {
@@ -108,7 +116,6 @@ form button {
   cursor: pointer;
   border: none;
   transition: background-color 0.3s;
-  font-family: 'Garamond', serif;
 }
 
 form button:hover {
@@ -140,11 +147,10 @@ form button:hover {
   .album-images { grid-template-columns: 1fr; }
 }
 
-/* Reset de links globalmente */
+/* Links */
 a {
   text-decoration: none;
   color: inherit;
-  font-family: 'Garamond', serif;
 }
 
 /* Nav-link */
@@ -156,7 +162,6 @@ a {
   border-radius: 0.25rem;
   display: inline-block;
   transition: transform 0.4s ease, background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Garamond', serif;
 }
 
 .nav-link:hover {
@@ -168,7 +173,3 @@ a {
 .nav-link:active {
   transform: scale(0.95);
 }
-
-
-
-
