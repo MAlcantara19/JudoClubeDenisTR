@@ -33,18 +33,18 @@ export default function Calendario() {
             src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FSao_Paulo&showPrint=0&src=YjZiNzg5Y2ZhODFlYWFjZmNhMWUwN2ZmY2NhMjM3YWQ2NzJhYTM2M2M3ZWQ3YmQzM2ViNmQ0NGMxZjYzN2Y1NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=cHQtYnIuYnJhemlsaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%233f51b5&color=%23d50000"
             style={{
               border: "solid 1px #777",
-              width: "95%",
+              width: "100%",
               maxWidth: "1200px",
               minHeight: "350px",
               height: "600px",
             }}
             frameBorder="0"
             scrolling="auto"
-            title="Calendário com Feriados"
+            title="Calendário Judô Clube Denis"
           />
         </div>
 
-        <h2 style={{ textAlign: "center", margin: "2rem 0 1rem 0" }}>
+        <h2 style={{ textAlign: "center", margin: "2rem 0 1rem 1" }}>
           Calendário Confederada Rio 2ª Edição
         </h2>
 

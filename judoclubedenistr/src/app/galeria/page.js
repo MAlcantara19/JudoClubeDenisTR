@@ -13,8 +13,8 @@ export default function PaginaGaleria() {
   // Busca álbuns via API interna
   useEffect(() => {
     fetch("/api/albuns")
-      .then(res => res.json())
-      .then(data => setAlbums(data));
+      .then((res) => res.json())
+      .then((data) => setAlbums(data));
   }, []);
 
   const openLightbox = (album, index) => {
@@ -27,7 +27,9 @@ export default function PaginaGaleria() {
 
   const prevImage = () => {
     if (!currentAlbum.length) return;
-    setCurrentIndex((currentIndex - 1 + currentAlbum.length) % currentAlbum.length);
+    setCurrentIndex(
+      (currentIndex - 1 + currentAlbum.length) % currentAlbum.length
+    );
   };
 
   const nextImage = () => {
@@ -49,7 +51,11 @@ export default function PaginaGaleria() {
               <h2>{album.title}</h2>
               <div className="album-images">
                 {album.images.map((imgSrc, idx) => (
-                  <div className="card" key={idx} onClick={() => openLightbox(album, idx)}>
+                  <div
+                    className="card"
+                    key={idx}
+                    onClick={() => openLightbox(album, idx)}
+                  >
                     <img src={imgSrc} alt={`Foto ${idx + 1}`} />
                   </div>
                 ))}
@@ -60,11 +66,37 @@ export default function PaginaGaleria() {
 
         {lightboxOpen && currentAlbum.length > 0 && (
           <div className="lightbox" onClick={closeLightbox}>
-            <span className="close" onClick={e => { e.stopPropagation(); closeLightbox(); }}>&times;</span>
-            <span className="prev" onClick={e => { e.stopPropagation(); prevImage(); }}>&#10094;</span>
+            <span
+              className="close"
+              onClick={(e) => {
+                e.stopPropagation();
+                closeLightbox();
+              }}
+            >
+              &times;
+            </span>
+            <span
+              className="prev"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+            >
+              &#10094;
+            </span>
             <img src={currentAlbum[currentIndex]} alt="Zoom" />
-            <span className="next" onClick={e => { e.stopPropagation(); nextImage(); }}>&#10095;</span>
-            <div className="caption">{currentIndex + 1} / {currentAlbum.length}</div>
+            <span
+              className="next"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+            >
+              &#10095;
+            </span>
+            <div className="caption">
+              {currentIndex + 1} / {currentAlbum.length}
+            </div>
           </div>
         )}
       </main>
@@ -73,7 +105,7 @@ export default function PaginaGaleria() {
 
       <style jsx>{`
         main {
-          padding: 2rem 3rem;
+          padding: 2rem 2rem;
         }
 
         .gallery {
@@ -84,36 +116,37 @@ export default function PaginaGaleria() {
         }
 
         .album {
-          background: #ffffff;
+          background: #ffffffff;
           padding: 1rem;
           border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.68);
         }
 
         .album h2 {
-          margin-bottom: 1rem;
-          color: #0D1B2A;
+          margin-bottom: 1.1rem;
+          color: #0d1b2a;
           text-transform: capitalize;
           text-align: center;
         }
 
-       .album-images {
-  display: flex; /* flex em vez de grid */
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
+        .album-images {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 7px;
+          justify-content: center;
+        }
 
-
-.card img {
-  display: block;
-  width: 80%; /* mantém proporção original */
-  height: auto;
-  max-width: 200px; /* largura máxima para não ficarem gigantes */
-}
-
-
-
+        .card img {
+          display: block;
+          width: 75%;
+          height: auto;
+          min-height: 100px;
+          border-radius: 8px;
+          cursor: pointer;
+          object-fit: cover;
+          transition: transform 0.3s, box-shadow 0.3s;
+          max-width: 200px;
+        }
 
         .lightbox {
           display: flex;
@@ -123,7 +156,7 @@ export default function PaginaGaleria() {
           top: 0;
           width: 100%;
           height: 100%;
-          background: rgba(0,0,0,0.9);
+          background: rgba(0, 0, 0, 0.9);
           justify-content: center;
           align-items: center;
           flex-direction: column;
@@ -156,7 +189,7 @@ export default function PaginaGaleria() {
           padding: 0.5rem 1rem;
           cursor: pointer;
           user-select: none;
-          background: rgba(0,0,0,0.4);
+          background: rgba(0, 0, 0, 0.4);
           border-radius: 5px;
           transition: background 0.3s;
         }
@@ -182,17 +215,27 @@ export default function PaginaGaleria() {
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         @media screen and (max-width: 768px) {
-          main { padding: 1.5rem; }
-          .album-images { grid-template-columns: 1fr 1fr; }
+          main {
+            padding: 1.5rem;
+          }
+          .album-images {
+            grid-template-columns: 1fr 1fr;
+          }
         }
 
         @media screen and (max-width: 480px) {
-          .album-images { grid-template-columns: 1fr; }
+          .album-images {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
     </>
