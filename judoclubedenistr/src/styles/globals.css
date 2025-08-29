@@ -31,9 +31,11 @@ time, mark, audio, video, button, input, select, textarea {
 
 /* Body */
 html, body {
-  width: 95%;
+  width: 100%;
   max-width: 100%;
-  overflow-x: hidden; /* remove scroll horizontal */
+  overflow-x: hidden; /* impede scroll horizontal */
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -52,9 +54,10 @@ img, iframe, video {
 /* Main centralizado com margem e padding */
 main {
   max-width: 1200px;
-  margin: 1rem auto; /* centralizado horizontal */
+  margin: 1rem auto;
   padding: 2rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Galeria */
