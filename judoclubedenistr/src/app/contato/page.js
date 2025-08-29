@@ -28,7 +28,7 @@ export default function Contato() {
             <iframe
               title="Endereço Grupo dos 13"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3696.4734020420983!2d-43.19181482471309!3d-22.107919079825383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x98f5ef2aa08349%3A0xf09f56b14b24c33!2sGrupo%20Dos%20Treze!5e0!3m2!1spt-BR!2sbr!4v1756237560936!5m2!1spt-BR!2sbr"
-              width="100%"
+              width="95%"
               height="300"
               style={{ border: 0 }}
               allowFullScreen
@@ -44,7 +44,7 @@ export default function Contato() {
             <iframe
               title="Endereço Colégio Santa Clara"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3696.2091232043745!2d-43.20665359999999!3d-22.118001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x98f67973ad2335%3A0x2b2133233bfb2181!2sCol%C3%A9gio%20Santa%20Clara%20de%20Tr%C3%AAs%20Rios!5e0!3m2!1spt-BR!2sbr!4v1732285449197!5m2!1spt-BR!2sbr"
-              width="100%"
+              width="95%"
               height="300"
               style={{ border: 0 }}
               allowFullScreen
